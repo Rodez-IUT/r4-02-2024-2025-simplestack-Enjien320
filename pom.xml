@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>SimpleStack</artifactId>
+    <artifactId>m2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <name>SimpleStack</name>
