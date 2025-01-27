@@ -19,6 +19,10 @@ class SimpleStackTest {
         // Then… (oracle)
         assertTrue(stack.isEmpty(), "A new stack must be empty");
         assertEquals( 0, stack.getSize(), "A new stack has no element");
+        assertThrows(EmptyStackException.class, ()->stack.peek(), "EmptyStackException not thrown");
+        assertThrows(EmptyStackException.class, stack::peek, "EmptyStackException not thrown");
+        assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
+        assertThrows(EmptyStackException.class, stack::pop, "EmptyStackException not thrown");
     }
 
     @Test
@@ -50,13 +54,22 @@ class SimpleStackTest {
     }
 
     @Test
-    @DisplayName("Test limit when trying to pop an empty stack")
-    public void testPopOnEmptyStack()  {
-        // Given an empty stack
+    @DisplayName("Test limit when trying to pop a stack")
+    public void testPop() throws EmptyStackException {
+        // Given an empty stack and two item
         Stack stack = new SimpleStack();
+        Item item = new SimpleItem();
+        Item item2 = new SimpleItem();
 
-        // When we "pop" the stack, should throws an EmptyStackException.
-        assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
-        assertThrows(EmptyStackException.class, stack::pop, "EmptyStackException not thrown");
+        // When the item are pushed in the stack
+        stack.push(item);
+        stack.push(item2);
+
+        // Then…
+        assertEquals(2, stack.getSize(),"The stack must constain 2 item");
+        assertSame( item2, stack.pop(),"The pushed item must be the same with the one who is suppressed");
+        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
+        assertSame( item, stack.peek(),"The pushed item must be on top of the stack");
+
     }
 }
