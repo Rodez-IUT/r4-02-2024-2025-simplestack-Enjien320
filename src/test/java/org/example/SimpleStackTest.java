@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SimpleStackTest {
 
     @Test
-    @DisplayName("Test the state of a newly created slack")
+    @DisplayName("Test the state of a newly created stack")
     public void testCreateEmptyStack() { // Test case
 
         // When a freshly stack is created
