@@ -59,7 +59,9 @@ public class SimpleStack implements Stack {
         if (stack.size() == 0) {
             throw new EmptyStackException();
         }
+        Item aRetourner = stack.get(stack.size()-1);
+
         stack.remove(stack.size()-1);
-        return stack.get(stack.size()-1);
+        return aRetourner;
     }
 }
